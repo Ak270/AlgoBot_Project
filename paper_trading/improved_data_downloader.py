@@ -47,12 +47,15 @@ def download_with_yfinance(symbol, start_date, end_date):
         return None
 
 def download_with_yahooquery(symbol):
-    """Method 2: yahooquery (alternative library)"""
+    """Method 1: yahooquery (alternative library)"""
     try:
         from yahooquery import Ticker
         print(f"Trying yahooquery for {symbol}...")
         ticker = Ticker(symbol)
+        
+        # Request 1 year of data to ensure we have enough
         df = ticker.history(period='1y')
+        
         if df is not None and len(df) > 0:
             # Reshape if multi-index
             if isinstance(df.index, pd.MultiIndex):
@@ -114,44 +117,39 @@ def download_with_nse_direct(symbol):
         return None
 
 def get_bank_nifty_data(lookback_days=90):
-    """
-    Try multiple methods to get Bank Nifty data
-    Returns DataFrame or None
-    """
+    """Try multiple methods to get Bank Nifty data"""
+    
+    # REQUEST MORE DAYS to account for holidays/weekends
+    actual_days = lookback_days + 60  # Add buffer for 60-day MA calculation
+    
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=lookback_days)
+    start_date = end_date - timedelta(days=actual_days)
     
     print("="*70)
     print("DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS")
     print("="*70)
     print(f"Target date range: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}\n")
     
-    # Try Method 1: yfinance
-    df = download_with_yfinance('^NSEBANK', start_date, end_date)
-    if df is not None and len(df) > 20:
+    # Try Method 1: yahooquery (more reliable on GitHub)
+    df = download_with_yahooquery('^NSEBANK')
+    if df is not None and len(df) > 60:  # Need at least 60 days for MA
         return scale_prices(df)
     
     time.sleep(1)
     
-    # Try Method 2: yahooquery
-    df = download_with_yahooquery('^NSEBANK')
-    if df is not None and len(df) > 20:
+    # Try Method 2: yfinance
+    df = download_with_yfinance('^NSEBANK', start_date, end_date)
+    if df is not None and len(df) > 60:
         return scale_prices(df)
     
     time.sleep(1)
     
     # Try Method 3: Local backup
     df = download_with_nse_direct('^NSEBANK')
-    if df is not None and len(df) > 20:
-        # Already scaled
-        return df
+    if df is not None and len(df) > 60:
+        return df  # Already scaled
     
     print("\n❌ All download methods failed!")
-    print("\n💡 SOLUTIONS:")
-    print("1. Check your internet connection")
-    print("2. Try again in a few minutes (Yahoo Finance might be rate-limiting)")
-    print("3. Use local backup data (we'll use the last backtest data)")
-    
     return None
 
 def scale_prices(df):
