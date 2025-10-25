@@ -226,9 +226,12 @@ print(f"  Current Price: ₹{dashboard['market']['current_price']:.2f}")
 print(f"  Signal: {dashboard['signal']['status']}")
 print(f"  Trend: {dashboard['signal']['trend']}")
 print(f"  Position: {'ACTIVE' if dashboard['position']['active'] else 'NONE'}")
-if dashboard['position']['active']:
+if dashboard['position']['active'] and dashboard['position']['entry_price'] is not None:
     print(f"  Entry: {dashboard['position']['entry_date']} @ ₹{dashboard['position']['entry_price']:.2f}")
     print(f"  P&L: ₹{dashboard['position']['unrealized_pnl_value']:+,.2f} ({dashboard['position']['unrealized_pnl_pct']:+.2f}%)")
+else:
+    print("  Entry: Not available (no valid crossover found recently)")
+
 print(f"  Account: ₹{dashboard['account']['current_value']:,.2f} ({dashboard['account']['total_return_pct']:+.2f}%)")
 print(f"  Trades in history: {len(manual_trades)}")
 print("="*70)
