@@ -1,0 +1,30 @@
+# MY DAILY PAPER TRADING ROUTINE
+
+Every evening at 6 PM:
+
+1. Open Terminal
+2. Run these commands:
+
+   cd ~/Desktop/AlgoBot_Project/paper_trading
+   python3.11 run_daily.py
+
+3. Read the output (takes 30 seconds to run)
+4. Update journal with emotions/thoughts
+5. Done! (Total time: 2 minutes)
+
+THAT'S IT! The bot does everything else.
+
+DO NOT:
+❌ Manually buy/sell
+❌ Change parameters mid-strategy
+❌ Skip days (consistency matters)
+❌ Panic on losses (system is designed for 45% win rate)
+
+DO:
+✅ Run script daily
+✅ Journal emotions honestly
+✅ Trust the process
+✅ Be patient
+
+After 60 days (Dec 24, 2025):
+Review results and decide on live trading.

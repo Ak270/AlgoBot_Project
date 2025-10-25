@@ -1,0 +1,32 @@
+DAY 4 RESULTS - MA CROSSOVER STRATEGY
+======================================
+
+PERFORMANCE:
+- Total Return: +71.19%
+- Annual Return: 14.43%
+- Win Rate: 46.2%
+- Win/Loss Ratio: 2.92:1
+- Max Drawdown: 18.79%
+
+BEST TRADE:
+- Date: June 2020 - Nov 2021
+- Return: +65.73%
+- Learning: Hold winners for months, not days
+
+WHAT WORKED:
+1. [Your observation]
+2. [Your observation]
+3. [Your observation]
+
+WHAT COULD IMPROVE:
+1. Sharpe ratio too low (need 0.5+)
+2. More trades needed (13 is small sample)
+3. [Your observation]
+
+EMOTIONAL STATE:
+- Before: [How did you feel with -3.5% loss?]
+- After: [How do you feel with +71% win?]
+- Confidence level: [1-10]
+
+TOMORROW'S GOAL:
+Optimize parameters to get 4/5 criteria passing
