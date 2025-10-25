@@ -7,6 +7,7 @@ from datetime import datetime
 import sys
 import os
 import backtrader as bt
+import pandas as pd
 
 # Add parent to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -22,7 +23,6 @@ df = get_bank_nifty_data(lookback_days=90)
 
 if df is None or len(df) < 60:
     print("Using backup data...")
-    import pandas as pd
     df = pd.read_csv('../data/banknifty_scaled_backtest.csv')
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.set_index('Date')
