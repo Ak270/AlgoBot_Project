@@ -13,8 +13,30 @@ def download_with_yfinance(symbol, start_date, end_date):
     """Method 1: yfinance (fastest when working)"""
     try:
         print(f"Trying yfinance for {symbol}...")
-        df = yf.download(symbol, start=start_date, end=end_date, progress=False, timeout=10)
+        df = yf.download(symbol, start=start_date, end=end_date, progress=False, timeout=10, auto_adjust=True)
+        
         if len(df) > 0:
+            # Handle multi-index columns (happens on GitHub Actions)
+            if isinstance(df.columns, pd.MultiIndex):
+                df.columns = df.columns.droplevel(1)  # Remove ticker level
+            
+            # Ensure columns are strings not tuples
+            df.columns = [str(col).strip() for col in df.columns]
+            
+            # Rename to standard format
+            df = df.rename(columns={
+                'Open': 'Open',
+                'High': 'High',
+                'Low': 'Low',
+                'Close': 'Close',
+                'Volume': 'Volume',
+                'Adj Close': 'Adj Close'
+            })
+            
+            # Add Adj Close if missing
+            if 'Adj Close' not in df.columns and 'Close' in df.columns:
+                df['Adj Close'] = df['Close']
+            
             print(f"✓ yfinance worked! Got {len(df)} days")
             return df
         else:
@@ -135,10 +157,19 @@ def get_bank_nifty_data(lookback_days=90):
 def scale_prices(df):
     """Scale prices (divide by 100 for Bank Nifty)"""
     df = df.copy()
-    for col in ['Open', 'High', 'Low', 'Close', 'Adj Close']:
-        if col in df.columns:
-            df[col] = df[col] / 100
+    
+    # Handle both string and tuple column names
+    columns_to_scale = []
+    for col in df.columns:
+        col_str = str(col).strip()
+        if any(x in col_str for x in ['Open', 'High', 'Low', 'Close', 'Adj Close']):
+            columns_to_scale.append(col)
+    
+    for col in columns_to_scale:
+        df[col] = df[col] / 100
+    
     return df
+
 
 if __name__ == "__main__":
     # Test the downloader

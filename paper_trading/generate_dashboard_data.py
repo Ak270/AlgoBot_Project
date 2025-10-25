@@ -33,8 +33,16 @@ print(f"✓ Data loaded: {len(df)} days")
 
 # Run backtrader to get exact position
 cerebro = bt.Cerebro()
+
+# Ensure DataFrame has proper column names
+if isinstance(df.columns, pd.MultiIndex):
+    df.columns = df.columns.droplevel(1)
+df.columns = [str(col).strip() for col in df.columns]
+
+# Create data feed
 data = bt.feeds.PandasData(dataname=df)
 cerebro.adddata(data)
+
 cerebro.addstrategy(SimpleMAStrategy, fast_period=25, slow_period=60, stop_loss_pct=0.02)
 
 INITIAL_CAPITAL = 100000.0
