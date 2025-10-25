@@ -1,0 +1,67 @@
+name: 🤖 Daily Paper Trading Bot
+
+# Run every day at 6 PM IST (12:30 PM UTC)
+on:
+  schedule:
+    - cron: "30 12 * * *"
+
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+jobs:
+  run-trading-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🐍 Setup Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install backtrader yfinance yahooquery pandas numpy matplotlib
+
+      - name: 🤖 Run Trading Bot
+        run: |
+          cd paper_trading
+          python run_daily.py > ../results/trading_log.txt 2>&1
+        continue-on-error: true
+
+      - name: 📊 Generate Dashboard Data
+        run: |
+          cd paper_trading
+          python generate_dashboard_data.py
+
+      - name: 📁 Prepare Results
+        run: |
+          mkdir -p results/daily_logs
+
+          # Save with timestamp
+          TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
+          cp results/trading_log.txt results/daily_logs/log_${TIMESTAMP}.txt
+
+          # Create status file
+          echo "Last run: $(date '+%Y-%m-%d %H:%M:%S IST')" > results/STATUS.txt
+          echo "Status: Completed" >> results/STATUS.txt
+
+      - name: 💾 Commit Results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "AlgoBot Trader"
+
+          git add results/
+          git add dashboard/data.json
+
+          git diff --quiet && git diff --staged --quiet || \
+            git commit -m "📊 Trading update: $(date '+%Y-%m-%d %H:%M IST')"
+
+      - name: 📤 Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main

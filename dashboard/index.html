@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoBot Trading Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        
+        .card h2 {
+            font-size: 1.3rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .signal-box {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .signal-hold { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
+        .signal-buy { background: linear-gradient(135deg, #27ae60, #229954); color: white; }
+        .signal-sell { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .signal-waiting { background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        .badge-bullish { background: #27ae60; color: white; }
+        .badge-bearish { background: #e74c3c; color: white; }
+        .badge-active { background: #3498db; color: white; }
+        .badge-closed { background: #95a5a6; color: white; }
+        
+        .positive { color: #27ae60; font-weight: 700; }
+        .negative { color: #e74c3c; font-weight: 700; }
+        
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 10px 0;
+        }
+        
+        .position-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .position-card h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .position-card .stat-label {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .position-card .stat-value {
+            color: white;
+        }
+        
+        .last-updated {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .metric-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-box .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .metric-box .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .dashboard { grid-template-columns: 1fr; }
+            .signal-box { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AlgoBot Trading Dashboard</h1>
+            <p>MA Crossover Strategy (25/60) • Bank Nifty • Live Forward Testing</p>
+        </div>
+        
+        <div class="dashboard">
+            <!-- Signal Card -->
+            <div class="card">
+                <h2>📡 Current Signal</h2>
+                <div id="signal-box"></div>
+                <div class="stat-row">
+                    <span class="stat-label">Trend</span>
+                    <span id="trend-badge"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">MA25 Status</span>
+                    <span class="stat-value" id="ma-status"></span>
+                </div>
+            </div>
+            
+            <!-- Current Position -->
+            <div class="card position-card" id="position-card">
+                <h2>💼 Current Position</h2>
+                <div id="position-content"></div>
+            </div>
+            
+            <!-- Account Status -->
+            <div class="card">
+                <h2>💰 Account Status</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Starting Capital</span>
+                    <span class="stat-value" id="initial-capital"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Current Value</span>
+                    <span class="stat-value" id="current-value"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Total Return</span>
+                    <span class="stat-value" id="total-return"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Total Profit</span>
+                    <span class="stat-value" id="total-profit"></span>
+                </div>
+            </div>
+            
+            <!-- Market Data -->
+            <div class="card">
+                <h2>📊 Market Data</h2>
+                <div class="big-number" id="current-price"></div>
+                <div class="stat-row">
+                    <span class="stat-label">25-Day MA</span>
+                    <span class="stat-value" id="ma25"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">60-Day MA</span>
+                    <span class="stat-value" id="ma60"></span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Latest Date</span>
+                    <span class="stat-value" style="font-size: 1rem;" id="latest-date"></span>
+                </div>
+            </div>
+            
+            <!-- Trading Stats -->
+            <div class="card">
+                <h2>📈 Trading Statistics</h2>
+                <div class="metric-grid">
+                    <div class="metric-box">
+                        <div class="label">Total Trades</div>
+                        <div class="value" id="total-trades">0</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Win Rate</div>
+                        <div class="value" id="win-rate">0%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Winners</div>
+                        <div class="value positive" id="winners">0</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Losers</div>
+                        <div class="value negative" id="losers">0</div>
+                    </div>
+                </div>
+                <div class="stat-row" style="margin-top: 15px;">
+                    <span class="stat-label">Max Drawdown</span>
+                    <span class="stat-value negative" id="max-drawdown">0%</span>
+                </div>
+            </div>
+            
+            <!-- Strategy Info -->
+            <div class="card">
+                <h2>⚙️ Strategy Details</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Fast MA</span>
+                    <span class="stat-value">25 days</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Slow MA</span>
+                    <span class="stat-value">60 days</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Stop-Loss</span>
+                    <span class="stat-value">2.0%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Position Size</span>
+                    <span class="stat-value">95% capital</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Backtest Return</span>
+                    <span class="stat-value positive">+110%</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trade History Table -->
+        <div class="card full-width">
+            <h2>📋 Trade History</h2>
+            <div style="overflow-x: auto;">
+                <table id="trade-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <thead>
+                        <tr style="background: #f8f9fa; border-bottom: 2px solid #1e3c72;">
+                            <th style="padding: 12px; text-align: left;">#</th>
+                            <th style="padding: 12px; text-align: left;">Entry Date</th>
+                            <th style="padding: 12px; text-align: right;">Entry Price</th>
+                            <th style="padding: 12px; text-align: right;">Quantity</th>
+                            <th style="padding: 12px; text-align: right;">Entry Value</th>
+                            <th style="padding: 12px; text-align: left;">Exit Date</th>
+                            <th style="padding: 12px; text-align: right;">Exit Price</th>
+                            <th style="padding: 12px; text-align: right;">Exit Value</th>
+                            <th style="padding: 12px; text-align: right;">Days Held</th>
+                            <th style="padding: 12px; text-align: right;">P&L</th>
+                            <th style="padding: 12px; text-align: right;">Return %</th>
+                            <th style="padding: 12px; text-align: center;">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trade-tbody">
+                        <!-- Trades will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            🕐 Last updated: <span id="last-updated"></span>
+        </div>
+    </div>
+    
+    <script>
+        // Function to create trade row
+        function createTradeRow(trade) {
+            const pnlClass = trade.pnl >= 0 ? 'positive' : 'negative';
+            const resultBadge = trade.result === 'WIN' ? 
+                '<span class="badge badge-active" style="background: #27ae60;">WIN</span>' : 
+                trade.result === 'ACTIVE' ? 
+                '<span class="badge badge-active">ACTIVE</span>' :
+                '<span class="badge" style="background: #e74c3c;">LOSS</span>';
+            
+            const exitValue = trade.exit_value === 'ACTIVE' ? 
+                '<span class="badge badge-active">ACTIVE</span>' : 
+                `₹${Math.round(trade.exit_value).toLocaleString()}`;
+            
+            const exitPrice = trade.exit_price === 'ACTIVE' ? 
+                '-' : 
+                `₹${trade.exit_price.toFixed(2)}`;
+            
+            return `
+                <tr style="border-bottom: 1px solid #f0f0f0;">
+                    <td style="padding: 12px; font-weight: 700;">${trade.trade_num}</td>
+                    <td style="padding: 12px;">${trade.entry_date}</td>
+                    <td style="padding: 12px; text-align: right; font-weight: 600;">₹${trade.entry_price.toFixed(2)}</td>
+                    <td style="padding: 12px; text-align: right;">${trade.quantity}</td>
+                    <td style="padding: 12px; text-align: right;">₹${Math.round(trade.entry_value).toLocaleString()}</td>
+                    <td style="padding: 12px;">${trade.exit_date}</td>
+                    <td style="padding: 12px; text-align: right; font-weight: 600;">${exitPrice}</td>
+                    <td style="padding: 12px; text-align: right;">${exitValue}</td>
+                    <td style="padding: 12px; text-align: right;">${trade.days_held} days</td>
+                    <td style="padding: 12px; text-align: right; font-weight: 700;" class="${pnlClass}">
+                        ₹${trade.pnl >= 0 ? '+' : ''}${Math.round(trade.pnl).toLocaleString()}
+                    </td>
+                    <td style="padding: 12px; text-align: right; font-weight: 700;" class="${pnlClass}">
+                        ${trade.pnl_pct >= 0 ? '+' : ''}${trade.pnl_pct.toFixed(2)}%
+                    </td>
+                    <td style="padding: 12px; text-align: center;">${resultBadge}</td>
+                </tr>
+            `;
+        }
+        
+        // Load dashboard data
+        fetch('data.json')
+            .then(r => r.json())
+            .then(data => {
+                // Signal
+                const signalClass = `signal-${data.signal.status.toLowerCase()}`;
+                document.getElementById('signal-box').innerHTML = 
+                    `<div class="signal-box ${signalClass}">${data.signal.status}</div>`;
+                
+                // Trend
+                const trendClass = data.signal.trend === 'BULLISH' ? 'badge-bullish' : 'badge-bearish';
+                document.getElementById('trend-badge').innerHTML = 
+                    `<span class="badge ${trendClass}">${data.signal.trend}</span>`;
+                
+                document.getElementById('ma-status').textContent = data.signal.description;
+                
+                // Position
+                if (data.position.active) {
+                    const pnlClass = data.position.unrealized_pnl_pct >= 0 ? 'positive' : 'negative';
+                    document.getElementById('position-content').innerHTML = `
+                        <div class="stat-row">
+                            <span class="stat-label">Status</span>
+                            <span class="badge badge-active">ACTIVE</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Entry Date</span>
+                            <span class="stat-value">${data.position.entry_date}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Entry Price</span>
+                            <span class="stat-value">₹${data.position.entry_price.toFixed(2)}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Current Price</span>
+                            <span class="stat-value">₹${data.position.current_price.toFixed(2)}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Stop-Loss</span>
+                            <span class="stat-value negative">₹${data.position.stop_loss.toFixed(2)}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Days Held</span>
+                            <span class="stat-value">${data.position.days_held} days</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Unrealized P&L</span>
+                            <span class="stat-value ${pnlClass}">
+                                ₹${data.position.unrealized_pnl_value >= 0 ? '+' : ''}${data.position.unrealized_pnl_value.toFixed(2)}
+                                (${data.position.unrealized_pnl_pct >= 0 ? '+' : ''}${data.position.unrealized_pnl_pct}%)
+                            </span>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('position-content').innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px;">
+                            <div class="badge badge-closed">NO POSITION</div>
+                            <p style="margin-top: 15px; opacity: 0.8;">Waiting for signal...</p>
+                        </div>
+                    `;
+                }
+                
+                // Account
+                const returnClass = data.account.total_return_pct >= 0 ? 'positive' : 'negative';
+                document.getElementById('initial-capital').textContent = `₹${data.account.initial_capital.toLocaleString()}`;
+                document.getElementById('current-value').textContent = `₹${Math.round(data.account.current_value).toLocaleString()}`;
+                document.getElementById('total-return').innerHTML = 
+                    `<span class="${returnClass}">${data.account.total_return_pct >= 0 ? '+' : ''}${data.account.total_return_pct}%</span>`;
+                document.getElementById('total-profit').innerHTML = 
+                    `<span class="${returnClass}">₹${data.account.total_profit >= 0 ? '+' : ''}${Math.round(data.account.total_profit).toLocaleString()}</span>`;
+                
+                // Market
+                document.getElementById('current-price').innerHTML = 
+                    `₹${data.market.current_price.toFixed(2)} <span style="font-size: 1rem; color: #666;">Bank Nifty</span>`;
+                document.getElementById('ma25').textContent = `₹${data.market.ma25.toFixed(2)}`;
+                document.getElementById('ma60').textContent = `₹${data.market.ma60.toFixed(2)}`;
+                document.getElementById('latest-date').textContent = data.market.latest_date;
+                
+                // Stats
+                document.getElementById('total-trades').textContent = data.stats.total_trades;
+                document.getElementById('win-rate').textContent = `${data.stats.win_rate}%`;
+                document.getElementById('winners').textContent = data.stats.winning_trades;
+                document.getElementById('losers').textContent = data.stats.losing_trades;
+                document.getElementById('max-drawdown').textContent = `${data.stats.max_drawdown}%`;
+                
+                // Trade History
+                if (data.trade_history && data.trade_history.length > 0) {
+                    const tbody = document.getElementById('trade-tbody');
+                    tbody.innerHTML = data.trade_history.map(trade => createTradeRow(trade)).join('');
+                }
+                
+                // Last updated
+                document.getElementById('last-updated').textContent = data.last_updated;
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                document.getElementById('signal-box').innerHTML = 
+                    '<div class="signal-box signal-waiting">LOADING...</div>';
+            });
+    </script>
+</body>
+</html>
