@@ -8,6 +8,9 @@ on:
   # Allow manual trigger for testing
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run-trading-bot:
     runs-on: ubuntu-latest
