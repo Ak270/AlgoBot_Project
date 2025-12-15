@@ -1,12 +1,12 @@
 {
-  "last_updated": "2025-12-14 13:05:30 IST",
+  "last_updated": "2025-12-15 13:23:18 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 593.8994921875,
-    "ma25": 590.642940625,
-    "ma60": 576.4204524739582,
-    "latest_date": "2025-12-12",
-    "data_days": 102
+    "current_price": 592.098515625,
+    "ma25": 590.03768125,
+    "ma60": 575.7133945312501,
+    "latest_date": "2025-12-11",
+    "data_days": 100
   },
   "signal": {
     "status": "HOLD",
@@ -15,28 +15,28 @@
   },
   "position": {
     "active": true,
-    "entry_date": "2025-10-14",
-    "entry_price": 564.9644921875,
-    "current_price": 593.8994921875,
-    "stop_loss": 553.66520234375,
+    "entry_date": null,
+    "entry_price": null,
+    "current_price": 592.098515625,
+    "stop_loss": null,
     "target": "MA Crossover (Dynamic)",
-    "days_held": 59,
-    "unrealized_pnl_pct": 5.12,
-    "unrealized_pnl_value": 4796.98
+    "days_held": 0,
+    "unrealized_pnl_pct": 0,
+    "unrealized_pnl_value": 0.0
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 104796.98313653126,
-    "total_return_pct": 4.8,
-    "total_profit": 4796.98,
-    "cash": 5021.87
+    "current_value": 100000.0,
+    "total_return_pct": 0.0,
+    "total_profit": 0.0,
+    "cash": 100000.0
   },
   "stats": {
-    "total_trades": 1,
+    "total_trades": 0,
     "winning_trades": 0,
     "losing_trades": 0,
-    "win_rate": 0.0,
-    "max_drawdown": 1.35,
+    "win_rate": 0,
+    "max_drawdown": 0.0,
     "avg_return": 0
   },
   "strategy": {
@@ -62,20 +62,6 @@
       "pnl_pct": 8.566313180002737,
       "days_held": 134,
       "result": "WIN"
-    },
-    {
-      "trade_num": 2,
-      "entry_date": "2025-10-14",
-      "entry_price": 564.9644921875,
-      "exit_date": "ACTIVE",
-      "exit_price": "ACTIVE",
-      "quantity": 181,
-      "entry_value": 102258.5730859375,
-      "exit_value": "ACTIVE",
-      "pnl": -3301.456863468731,
-      "pnl_pct": 5.121560806054526,
-      "days_held": 59,
-      "result": "ACTIVE"
     }
   ]
 }
