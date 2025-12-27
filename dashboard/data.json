@@ -1,12 +1,12 @@
 {
-  "last_updated": "2025-12-26 13:09:59 IST",
+  "last_updated": "2025-12-27 13:06:55 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 591.836015625,
-    "ma25": 592.58874375,
-    "ma60": 581.6256529947916,
-    "latest_date": "2025-12-24",
-    "data_days": 102
+    "current_price": 590.113515625,
+    "ma25": 592.4542046874999,
+    "ma60": 582.384044921875,
+    "latest_date": "2025-12-26",
+    "data_days": 248
   },
   "signal": {
     "status": "HOLD",
@@ -15,28 +15,28 @@
   },
   "position": {
     "active": true,
-    "entry_date": null,
-    "entry_price": null,
-    "current_price": 591.836015625,
-    "stop_loss": null,
+    "entry_date": "2025-10-14",
+    "entry_price": 564.9644921875,
+    "current_price": 590.113515625,
+    "stop_loss": 553.66520234375,
     "target": "MA Crossover (Dynamic)",
-    "days_held": 0,
-    "unrealized_pnl_pct": 0,
-    "unrealized_pnl_value": 0.0
+    "days_held": 73,
+    "unrealized_pnl_pct": 4.45,
+    "unrealized_pnl_value": 12155.5
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 100000.0,
-    "total_return_pct": 0.0,
-    "total_profit": 0.0,
-    "cash": 100000.0
+    "current_value": 112155.50094419923,
+    "total_return_pct": 12.16,
+    "total_profit": 12155.5,
+    "cash": 5344.95
   },
   "stats": {
-    "total_trades": 0,
-    "winning_trades": 0,
+    "total_trades": 2,
+    "winning_trades": 1,
     "losing_trades": 0,
-    "win_rate": 0,
-    "max_drawdown": 0.0,
+    "win_rate": 50.0,
+    "max_drawdown": 4.07,
     "avg_return": 0
   },
   "strategy": {
@@ -62,6 +62,20 @@
       "pnl_pct": 8.566313180002737,
       "days_held": 134,
       "result": "WIN"
+    },
+    {
+      "trade_num": 2,
+      "entry_date": "2025-10-14",
+      "entry_price": 564.9644921875,
+      "exit_date": "ACTIVE",
+      "exit_price": "ACTIVE",
+      "quantity": 181,
+      "entry_value": 102258.5730859375,
+      "exit_value": "ACTIVE",
+      "pnl": 4057.060944199242,
+      "pnl_pct": 4.451434344152294,
+      "days_held": 73,
+      "result": "ACTIVE"
     }
   ]
 }
