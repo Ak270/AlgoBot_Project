@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-01-30 13:36:14 IST",
+  "last_updated": "2026-01-31 13:23:59 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 599.578515625,
-    "ma25": 594.7848640625,
-    "ma60": 591.3517695312499,
-    "latest_date": "2026-01-29",
-    "data_days": 101
+    "current_price": 596.1044921875,
+    "ma25": 594.90744375,
+    "ma60": 591.6574524739584,
+    "latest_date": "2026-01-30",
+    "data_days": 246
   },
   "signal": {
     "status": "HOLD",
@@ -15,28 +15,28 @@
   },
   "position": {
     "active": true,
-    "entry_date": null,
-    "entry_price": null,
-    "current_price": 599.578515625,
-    "stop_loss": null,
+    "entry_date": "2025-10-14",
+    "entry_price": 564.9644921875,
+    "current_price": 596.1044921875,
+    "stop_loss": 553.66520234375,
     "target": "MA Crossover (Dynamic)",
-    "days_held": 0,
-    "unrealized_pnl_pct": 0,
-    "unrealized_pnl_value": 0.0
+    "days_held": 108,
+    "unrealized_pnl_pct": 5.51,
+    "unrealized_pnl_value": 5167.42
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 100000.0,
-    "total_return_pct": 0.0,
-    "total_profit": 0.0,
-    "cash": 100000.0
+    "current_value": 105167.42313653126,
+    "total_return_pct": 5.17,
+    "total_profit": 5167.42,
+    "cash": 5021.87
   },
   "stats": {
-    "total_trades": 0,
+    "total_trades": 1,
     "winning_trades": 0,
     "losing_trades": 0,
-    "win_rate": 0,
-    "max_drawdown": 0.0,
+    "win_rate": 0.0,
+    "max_drawdown": 2.66,
     "avg_return": 0
   },
   "strategy": {
@@ -62,6 +62,20 @@
       "pnl_pct": 8.566313180002737,
       "days_held": 134,
       "result": "WIN"
+    },
+    {
+      "trade_num": 2,
+      "entry_date": "2025-10-14",
+      "entry_price": 564.9644921875,
+      "exit_date": "ACTIVE",
+      "exit_price": "ACTIVE",
+      "quantity": 181,
+      "entry_value": 102258.5730859375,
+      "exit_value": "ACTIVE",
+      "pnl": -2931.016863468729,
+      "pnl_pct": 5.511850820823838,
+      "days_held": 108,
+      "result": "ACTIVE"
     }
   ]
 }
