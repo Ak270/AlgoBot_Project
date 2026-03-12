@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-03-11 13:45:12 IST",
+  "last_updated": "2026-03-12 13:43:08 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 569.5080078125,
-    "ma25": 600.9971218750001,
-    "ma60": 596.9001614583334,
-    "latest_date": "2026-03-10",
-    "data_days": 101
+    "current_price": 557.3575,
+    "ma25": 599.2749015625,
+    "ma60": 596.32114453125,
+    "latest_date": "2026-03-11",
+    "data_days": 102
   },
   "signal": {
     "status": "HOLD",
@@ -17,7 +17,7 @@
     "active": true,
     "entry_date": null,
     "entry_price": null,
-    "current_price": 569.5080078125,
+    "current_price": 557.3575,
     "stop_loss": null,
     "target": "MA Crossover (Dynamic)",
     "days_held": 0,
