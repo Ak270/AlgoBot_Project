@@ -1,42 +1,42 @@
 {
-  "last_updated": "2026-03-12 13:43:08 IST",
+  "last_updated": "2026-03-13 13:40:16 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 557.3575,
-    "ma25": 599.2749015625,
-    "ma60": 596.32114453125,
-    "latest_date": "2026-03-11",
-    "data_days": 102
+    "current_price": NaN,
+    "ma25": NaN,
+    "ma60": NaN,
+    "latest_date": "2026-03-13",
+    "data_days": 247
   },
   "signal": {
-    "status": "HOLD",
-    "trend": "BULLISH",
-    "description": "MA25 above MA60"
+    "status": "WAITING",
+    "trend": "BEARISH",
+    "description": "MA25 below MA60"
   },
   "position": {
-    "active": true,
+    "active": false,
     "entry_date": null,
     "entry_price": null,
-    "current_price": 557.3575,
+    "current_price": null,
     "stop_loss": null,
     "target": "MA Crossover (Dynamic)",
     "days_held": 0,
     "unrealized_pnl_pct": 0,
-    "unrealized_pnl_value": 0.0
+    "unrealized_pnl_value": 0
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 100000.0,
-    "total_return_pct": 0.0,
-    "total_profit": 0.0,
-    "cash": 100000.0
+    "current_value": NaN,
+    "total_return_pct": NaN,
+    "total_profit": NaN,
+    "cash": 96727.34
   },
   "stats": {
-    "total_trades": 0,
+    "total_trades": 1,
     "winning_trades": 0,
-    "losing_trades": 0,
-    "win_rate": 0,
-    "max_drawdown": 0.0,
+    "losing_trades": 1,
+    "win_rate": 0.0,
+    "max_drawdown": 9.99,
     "avg_return": 0
   },
   "strategy": {
