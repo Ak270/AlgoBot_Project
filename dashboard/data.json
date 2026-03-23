@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-03-22 13:26:53 IST",
+  "last_updated": "2026-03-23 13:55:26 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 534.2705078125,
-    "ma25": 582.1345421875,
-    "ma60": 590.6966692708334,
-    "latest_date": "2026-03-20",
-    "data_days": 248
+    "current_price": NaN,
+    "ma25": NaN,
+    "ma60": NaN,
+    "latest_date": "2026-03-23",
+    "data_days": 247
   },
   "signal": {
     "status": "WAITING",
@@ -26,9 +26,9 @@
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 96727.34229700001,
-    "total_return_pct": -3.27,
-    "total_profit": -3272.66,
+    "current_value": NaN,
+    "total_return_pct": NaN,
+    "total_profit": NaN,
     "cash": 96727.34
   },
   "stats": {
