@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-04-28 15:03:56 IST",
+  "last_updated": "2026-04-29 14:38:57 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 554.003515625,
-    "ma25": 544.654940625,
-    "ma60": 571.8543763020833,
-    "latest_date": "2026-04-28",
+    "current_price": 554.036015625,
+    "ma25": 545.43598125,
+    "ma60": 571.1551764322917,
+    "latest_date": "2026-04-29",
     "data_days": 248
   },
   "signal": {
