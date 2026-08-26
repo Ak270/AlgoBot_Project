@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-08-25 13:28:41 IST",
+  "last_updated": "2026-08-26 13:34:32 IST",
   "market": {
     "symbol": "Bank Nifty",
-    "current_price": 575.1419921875,
-    "ma25": 574.4087578125,
-    "ma60": 571.8826998697916,
-    "latest_date": "2026-08-25",
+    "current_price": 577.8375,
+    "ma25": 574.6715375,
+    "ma60": 572.5608834635417,
+    "latest_date": "2026-08-26",
     "data_days": 247
   },
   "signal": {
@@ -17,18 +17,18 @@
     "active": true,
     "entry_date": "2026-06-17",
     "entry_price": 575.8505078125,
-    "current_price": 575.1419921875,
+    "current_price": 577.8375,
     "stop_loss": 564.3334976562501,
     "target": "MA Crossover (Dynamic)",
-    "days_held": 69,
-    "unrealized_pnl_pct": -0.12,
-    "unrealized_pnl_value": -144.34
+    "days_held": 70,
+    "unrealized_pnl_pct": 0.35,
+    "unrealized_pnl_value": 297.73
   },
   "account": {
     "initial_capital": 100000.0,
-    "current_value": 99855.66418232812,
-    "total_return_pct": -0.14,
-    "total_profit": -144.34,
+    "current_value": 100297.7274635781,
+    "total_return_pct": 0.3,
+    "total_profit": 297.73,
     "cash": 5532.38
   },
   "stats": {
@@ -72,9 +72,9 @@
       "quantity": 181,
       "entry_value": 104228.94191406251,
       "exit_value": "ACTIVE",
-      "pnl": -8242.775817671863,
-      "pnl_pct": -0.12303811759956096,
-      "days_held": 69,
+      "pnl": -7800.712536421881,
+      "pnl_pct": 0.3450534749110501,
+      "days_held": 70,
       "result": "ACTIVE"
     }
   ]
