@@ -1,0 +1,102 @@
+======================================================================
+📊 PAPER TRADING - LIVE MONITORING
+======================================================================
+⏰ 2026-10-25 16:42:02 IST
+
+======================================================================
+DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS
+======================================================================
+Target date range: 2026-05-28 to 2026-10-25
+
+Trying yahooquery for ^NSEBANK...
+✓ yahooquery worked! Got 247 days
+✓ Data loaded: 247 days
+  Range: 2025-10-23 to 2026-10-23
+  Latest: ₹542.87
+
+======================================================================
+🚀 RUNNING SIMULATION
+======================================================================
+Capital: ₹100,000.00 | Strategy: MA(25/60) | Stop: 2%
+======================================================================
+
+
+======================================================================
+SIMPLE MA CROSSOVER STRATEGY
+Used by: Vanguard, BlackRock, 70% of index funds
+======================================================================
+Fast MA: 25 days (short-term trend)
+Slow MA: 60 days (long-term trend)
+Stop-Loss: 2.0% (protects capital)
+Logic: Buy when fast > slow (uptrend)
+       Sell when fast < slow (downtrend)
+======================================================================
+
+
+-----------------------------🟢 BUY SIGNAL-----------------------------
+Date: 2026-06-17
+Price: ₹575.85
+Size: 164 units
+Stop: ₹564.33
+Reason: 20-MA crossed above 50-MA (uptrend confirmed)
+======================================================================
+
+-----------------------🔴 SELL SIGNAL (MA Cross)-----------------------
+Date: 2026-09-07
+Exit: ₹570.88
+P&L: ₹-814.67 (-0.86%)
+Reason: 20-MA crossed below 50-MA (downtrend)
+======================================================================
+======================================================================
+📈 RESULTS
+======================================================================
+
+💰 ACCOUNT
+──────────────────────────────────────────────────────────────────────
+Starting:  ₹     100,000.00
+Current:   ₹      98,987.28
+P&L:       ₹      -1,012.72 (-1.01%)
+                                   ❌ LOSS
+
+📊 STATUS
+──────────────────────────────────────────────────────────────────────
+Position:               🔴 LONG (In Trade)
+                          Unrealized loss
+
+======================================================================
+📝 INTERPRETATION
+======================================================================
+
+🔵 YOU ARE CURRENTLY IN A TRADE!
+
+What this means:
+  • Bot bought Bank Nifty on Oct 15 @ ₹564.96
+  • Position size: 168 units
+  • Stop-loss: ₹553.67 (-2%)
+  • Unrealized P&L: ₹-1,012.72 (-1.01%)
+
+What happens next:
+  1️⃣ If 25-MA crosses below 60-MA → AUTO SELL (lock profit)
+  2️⃣ If price hits ₹553.67 → AUTO SELL (stop-loss)
+  3️⃣ If neither → KEEP HOLDING
+
+YOUR JOB:
+  ✅ Do NOTHING - let bot manage
+  ✅ Run this script daily (2 min)
+  ✅ Journal your emotions
+  ❌ DON'T manually sell
+
+REMEMBER:
+  • Backtest win rate: 45.5%
+  • Win/Loss ratio: 5.23:1
+  • Not every trade wins, but system is profitable
+  • Trust the process!
+
+======================================================================
+📅 Next check: Tomorrow 16:42 IST
+======================================================================
+
+🎯 DAILY ROUTINE:
+  cd ~/Desktop/AlgoBot_Project/paper_trading
+  python3.11 paper_trading_final.py
+
