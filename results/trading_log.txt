@@ -1,18 +1,18 @@
 ======================================================================
 📊 PAPER TRADING - LIVE MONITORING
 ======================================================================
-⏰ 2026-10-26 18:49:10 IST
+⏰ 2026-10-27 18:09:36 IST
 
 ======================================================================
 DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS
 ======================================================================
-Target date range: 2026-05-29 to 2026-10-26
+Target date range: 2026-05-30 to 2026-10-27
 
 Trying yahooquery for ^NSEBANK...
-✓ yahooquery worked! Got 246 days
-✓ Data loaded: 246 days
-  Range: 2025-10-27 to 2026-10-26
-  Latest: ₹nan
+✓ yahooquery worked! Got 247 days
+✓ Data loaded: 247 days
+  Range: 2025-10-27 to 2026-10-27
+  Latest: ₹539.75
 
 ======================================================================
 🚀 RUNNING SIMULATION
@@ -54,30 +54,46 @@ Reason: 20-MA crossed below 50-MA (downtrend)
 💰 ACCOUNT
 ──────────────────────────────────────────────────────────────────────
 Starting:  ₹     100,000.00
-Current:   ₹            nan
-P&L:       ₹           +nan (+nan%)
+Current:   ₹      98,987.28
+P&L:       ₹      -1,012.72 (-1.01%)
+                                   ❌ LOSS
 
 📊 STATUS
 ──────────────────────────────────────────────────────────────────────
-Position:           ⏳ WAITING (No Signal)
+Position:               🔴 LONG (In Trade)
+                          Unrealized loss
 
 ======================================================================
 📝 INTERPRETATION
 ======================================================================
 
-📊 TRADE COMPLETED
+🔵 YOU ARE CURRENTLY IN A TRADE!
 
-Result: ₹+nan (+nan%)
+What this means:
+  • Bot bought Bank Nifty on Oct 15 @ ₹564.96
+  • Position size: 168 units
+  • Stop-loss: ₹553.67 (-2%)
+  • Unrealized P&L: ₹-1,012.72 (-1.01%)
 
-❌ LOSS - but stop-loss protected from disaster
+What happens next:
+  1️⃣ If 25-MA crosses below 60-MA → AUTO SELL (lock profit)
+  2️⃣ If price hits ₹553.67 → AUTO SELL (stop-loss)
+  3️⃣ If neither → KEEP HOLDING
 
 YOUR JOB:
-  ✅ Review trade in journal
-  ✅ Analyze your emotional response
-  ✅ Continue monitoring for next signal
+  ✅ Do NOTHING - let bot manage
+  ✅ Run this script daily (2 min)
+  ✅ Journal your emotions
+  ❌ DON'T manually sell
+
+REMEMBER:
+  • Backtest win rate: 45.5%
+  • Win/Loss ratio: 5.23:1
+  • Not every trade wins, but system is profitable
+  • Trust the process!
 
 ======================================================================
-📅 Next check: Tomorrow 18:49 IST
+📅 Next check: Tomorrow 18:09 IST
 ======================================================================
 
 🎯 DAILY ROUTINE:
