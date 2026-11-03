@@ -1,17 +1,17 @@
 ======================================================================
 📊 PAPER TRADING - LIVE MONITORING
 ======================================================================
-⏰ 2026-11-02 21:52:15 IST
+⏰ 2026-11-03 19:43:07 IST
 
 ======================================================================
 DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS
 ======================================================================
-Target date range: 2026-06-05 to 2026-11-02
+Target date range: 2026-06-06 to 2026-11-03
 
 Trying yahooquery for ^NSEBANK...
-✓ yahooquery worked! Got 246 days
-✓ Data loaded: 246 days
-  Range: 2025-11-03 to 2026-11-02
+✓ yahooquery worked! Got 247 days
+✓ Data loaded: 247 days
+  Range: 2025-11-03 to 2026-11-03
   Latest: ₹nan
 
 ======================================================================
@@ -77,7 +77,7 @@ YOUR JOB:
   ✅ Continue monitoring for next signal
 
 ======================================================================
-📅 Next check: Tomorrow 21:52 IST
+📅 Next check: Tomorrow 19:43 IST
 ======================================================================
 
 🎯 DAILY ROUTINE:
