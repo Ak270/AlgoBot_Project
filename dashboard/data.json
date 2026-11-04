@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-11-03 19:43:09 IST",
+  "last_updated": "2026-11-04 19:57:56 IST",
   "market": {
     "symbol": "Bank Nifty",
     "current_price": NaN,
     "ma25": NaN,
     "ma60": NaN,
-    "latest_date": "2026-11-03",
+    "latest_date": "2026-11-04",
     "data_days": 247
   },
   "signal": {
