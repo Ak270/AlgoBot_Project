@@ -1,18 +1,20 @@
 ======================================================================
 📊 PAPER TRADING - LIVE MONITORING
 ======================================================================
-⏰ 2026-11-07 17:49:23 IST
+⏰ 2026-11-08 18:00:49 IST
 
 ======================================================================
 DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS
 ======================================================================
-Target date range: 2026-06-10 to 2026-11-07
+Target date range: 2026-06-11 to 2026-11-08
 
 Trying yahooquery for ^NSEBANK...
-✓ yahooquery worked! Got 248 days
-✓ Data loaded: 248 days
-  Range: 2025-11-06 to 2026-11-06
-  Latest: ₹590.86
+✗ yahooquery failed: Mixed timezones detected. Pass utc=True in to_datetime or tz='UTC' in DatetimeIndex to convert to a 
+Trying yfinance for ^NSEBANK...
+✓ yfinance worked! Got 104 days
+✓ Data loaded: 104 days
+  Range: 2026-06-11 to 2026-11-08
+  Latest: ₹588.51
 
 ======================================================================
 🚀 RUNNING SIMULATION
@@ -32,21 +34,6 @@ Logic: Buy when fast > slow (uptrend)
        Sell when fast < slow (downtrend)
 ======================================================================
 
-
------------------------------🟢 BUY SIGNAL-----------------------------
-Date: 2026-06-17
-Price: ₹575.85
-Size: 164 units
-Stop: ₹564.33
-Reason: 20-MA crossed above 50-MA (uptrend confirmed)
-======================================================================
-
------------------------🔴 SELL SIGNAL (MA Cross)-----------------------
-Date: 2026-09-07
-Exit: ₹570.88
-P&L: ₹-814.67 (-0.86%)
-Reason: 20-MA crossed below 50-MA (downtrend)
-======================================================================
 ======================================================================
 📈 RESULTS
 ======================================================================
@@ -54,46 +41,41 @@ Reason: 20-MA crossed below 50-MA (downtrend)
 💰 ACCOUNT
 ──────────────────────────────────────────────────────────────────────
 Starting:  ₹     100,000.00
-Current:   ₹      98,987.28
-P&L:       ₹      -1,012.72 (-1.01%)
-                                   ❌ LOSS
+Current:   ₹     100,000.00
+P&L:       ₹          +0.00 (+0.00%)
 
 📊 STATUS
 ──────────────────────────────────────────────────────────────────────
-Position:               🔴 LONG (In Trade)
-                          Unrealized loss
+Position:           ⏳ WAITING (No Signal)
 
 ======================================================================
 📝 INTERPRETATION
 ======================================================================
 
-🔵 YOU ARE CURRENTLY IN A TRADE!
+⏳ WAITING FOR TRADE SIGNAL
+
+Current situation:
+  • 25-day MA and 60-day MA not aligned
+  • Bot is patiently waiting for setup
+  • This is NORMAL for swing trading
 
 What this means:
-  • Bot bought Bank Nifty on Oct 15 @ ₹564.96
-  • Position size: 168 units
-  • Stop-loss: ₹553.67 (-2%)
-  • Unrealized P&L: ₹-1,012.72 (-1.01%)
+  ✅ Bot is working correctly
+  ✅ Risk management active
+  ✅ Quality over quantity
 
-What happens next:
-  1️⃣ If 25-MA crosses below 60-MA → AUTO SELL (lock profit)
-  2️⃣ If price hits ₹553.67 → AUTO SELL (stop-loss)
-  3️⃣ If neither → KEEP HOLDING
+Historical patterns:
+  • Average 2-3 trades per year
+  • May wait weeks for perfect entry
+  • When signal comes, high probability
 
 YOUR JOB:
-  ✅ Do NOTHING - let bot manage
-  ✅ Run this script daily (2 min)
-  ✅ Journal your emotions
-  ❌ DON'T manually sell
-
-REMEMBER:
-  • Backtest win rate: 45.5%
-  • Win/Loss ratio: 5.23:1
-  • Not every trade wins, but system is profitable
-  • Trust the process!
+  ✅ Continue monitoring daily
+  ✅ Be patient - don't force trades
+  ✅ Journal your emotions (boredom? anxiety?)
 
 ======================================================================
-📅 Next check: Tomorrow 17:49 IST
+📅 Next check: Tomorrow 18:00 IST
 ======================================================================
 
 🎯 DAILY ROUTINE:
