@@ -1,20 +1,18 @@
 ======================================================================
 📊 PAPER TRADING - LIVE MONITORING
 ======================================================================
-⏰ 2026-11-08 18:00:49 IST
+⏰ 2026-11-09 22:38:11 IST
 
 ======================================================================
 DOWNLOADING BANK NIFTY DATA - MULTIPLE FALLBACK METHODS
 ======================================================================
-Target date range: 2026-06-11 to 2026-11-08
+Target date range: 2026-06-12 to 2026-11-09
 
 Trying yahooquery for ^NSEBANK...
-✗ yahooquery failed: Mixed timezones detected. Pass utc=True in to_datetime or tz='UTC' in DatetimeIndex to convert to a 
-Trying yfinance for ^NSEBANK...
-✓ yfinance worked! Got 104 days
-✓ Data loaded: 104 days
-  Range: 2026-06-11 to 2026-11-08
-  Latest: ₹588.51
+✓ yahooquery worked! Got 247 days
+✓ Data loaded: 247 days
+  Range: 2025-11-10 to 2026-11-09
+  Latest: ₹nan
 
 ======================================================================
 🚀 RUNNING SIMULATION
@@ -34,6 +32,21 @@ Logic: Buy when fast > slow (uptrend)
        Sell when fast < slow (downtrend)
 ======================================================================
 
+
+-----------------------------🟢 BUY SIGNAL-----------------------------
+Date: 2026-06-17
+Price: ₹575.85
+Size: 164 units
+Stop: ₹564.33
+Reason: 20-MA crossed above 50-MA (uptrend confirmed)
+======================================================================
+
+-----------------------🔴 SELL SIGNAL (MA Cross)-----------------------
+Date: 2026-09-07
+Exit: ₹570.88
+P&L: ₹-814.67 (-0.86%)
+Reason: 20-MA crossed below 50-MA (downtrend)
+======================================================================
 ======================================================================
 📈 RESULTS
 ======================================================================
@@ -41,8 +54,8 @@ Logic: Buy when fast > slow (uptrend)
 💰 ACCOUNT
 ──────────────────────────────────────────────────────────────────────
 Starting:  ₹     100,000.00
-Current:   ₹     100,000.00
-P&L:       ₹          +0.00 (+0.00%)
+Current:   ₹            nan
+P&L:       ₹           +nan (+nan%)
 
 📊 STATUS
 ──────────────────────────────────────────────────────────────────────
@@ -52,30 +65,19 @@ Position:           ⏳ WAITING (No Signal)
 📝 INTERPRETATION
 ======================================================================
 
-⏳ WAITING FOR TRADE SIGNAL
+📊 TRADE COMPLETED
 
-Current situation:
-  • 25-day MA and 60-day MA not aligned
-  • Bot is patiently waiting for setup
-  • This is NORMAL for swing trading
+Result: ₹+nan (+nan%)
 
-What this means:
-  ✅ Bot is working correctly
-  ✅ Risk management active
-  ✅ Quality over quantity
-
-Historical patterns:
-  • Average 2-3 trades per year
-  • May wait weeks for perfect entry
-  • When signal comes, high probability
+❌ LOSS - but stop-loss protected from disaster
 
 YOUR JOB:
-  ✅ Continue monitoring daily
-  ✅ Be patient - don't force trades
-  ✅ Journal your emotions (boredom? anxiety?)
+  ✅ Review trade in journal
+  ✅ Analyze your emotional response
+  ✅ Continue monitoring for next signal
 
 ======================================================================
-📅 Next check: Tomorrow 18:00 IST
+📅 Next check: Tomorrow 22:38 IST
 ======================================================================
 
 🎯 DAILY ROUTINE:
